@@ -1,0 +1,22 @@
+z = input().split()
+x = []
+c = []
+f = False
+for i in range(len(z)):
+    if z[i] == "(":
+        x.append(z[i])
+        c.append(i)
+    if z[i] == ")":
+        if len(x) == 0:
+            print("лишняя  скобка на", i + 1, "позиции")
+            f = True
+            break
+        if len(x) > 0:
+            if x[-1] == "(":
+                x.pop()
+                c.pop()
+
+if len(x) == 0 and f == False:
+    print("Последовательность корректная")
+if len(x) > 0 and f == False:
+    print("скобка закрылась, но не на своей позиции", c[-1])
